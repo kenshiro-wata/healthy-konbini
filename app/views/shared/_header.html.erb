@@ -5,8 +5,15 @@
     </a>
     <a class="py-2 d-none d-md-inline-block" href="#">何ができる？</a>
     <a class="py-2 d-none d-md-inline-block" href="#">栄養管理表</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">サインイン</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">ログイン</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">ログアウト</a>
+    <% if user_signed_in? %>
+      <%= link_to current_user.name, "#", class: "py-2 d-none d-md-inline-block" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'py-2 d-none d-md-inline-block'%>
+    <% else %>
+      <%= link_to '新規登録', new_user_registration_path, class: "py-2 d-none d-md-inline-block" %>
+      <%= link_to 'ログイン', new_user_session_path, class: "py-2 d-none d-md-inline-block" %>
+    <% end %>
   </div>
 </nav>
+
+
+
