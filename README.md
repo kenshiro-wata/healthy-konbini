@@ -1,24 +1,57 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                    | Type   | Options     |
+| ------------------------- | ------ | ----------- |
+| name                      | string | null: false |
+| email                     | string | null: false |
+| password                  | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :orders
+- has_many :recommends
 
-* Configuration
+## orders テーブル
 
-* Database creation
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| price               | integer    | null: false |
+| kcal                | integer    | null: false |
+| user                | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to_active_hash :onigiri
+- belongs_to_active_hash :bento
+- belongs_to_active_hash :bread
+- belongs_to_active_hash :sweet_bread
+- belongs_to_active_hash :sandwich
+- belongs_to_active_hash :salad_soup
+- belongs_to_active_hash :fry
+- belongs_to_active_hash :dessert
+- belongs_to_active_hash :drink
 
-* Services (job queues, cache servers, search engines, etc.)
+## recommends テーブル
 
-* Deployment instructions
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name               | string    | null: false |
+| kcal                | integer    | null: false |
+| price                | integer    | null: false |
+| user                | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to_active_hash :onigiri
+- belongs_to_active_hash :bento
+- belongs_to_active_hash :bread
+- belongs_to_active_hash :sweet_bread
+- belongs_to_active_hash :sandwich
+- belongs_to_active_hash :salad_soup
+- belongs_to_active_hash :fry
+- belongs_to_active_hash :dessert
+- belongs_to_active_hash :drink
