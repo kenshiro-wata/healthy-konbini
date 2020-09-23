@@ -10,10 +10,10 @@
 
 ### Association
 
-- has_many :sets
+- has_many :settings
 - has_many :recommends
 
-## sets テーブル
+## settings テーブル
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
