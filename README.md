@@ -7,18 +7,13 @@
 | name                      | string | null: false |
 | email                     | string | null: false |
 | password                  | string | null: false |
-| password_confirmation     | string | null: false |
-| last_name                 | string | null: false |
-| first_name                | string | null: false |
-| last_name_kana            | string | null: false |
-| first_name_kana           | string | null: false |
-| birth                     | date   | null: false |
 
 ### Association
 
-- has_many :historys
+- has_many :sets
+- has_many :recommends
 
-## historys テーブル
+## sets テーブル
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
@@ -29,84 +24,34 @@
 ### Association
 
 - belongs_to :user
-- has_many :sets, through: set_historys
+- belongs_to_active_hash :onigiri
+- belongs_to_active_hash :bento
+- belongs_to_active_hash :bread
+- belongs_to_active_hash :sweet_bread
+- belongs_to_active_hash :sandwich
+- belongs_to_active_hash :salad_soup
+- belongs_to_active_hash :fry
+- belongs_to_active_hash :dessert
+- belongs_to_active_hash :drink
 
-## sets テーブル
-
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| name               | string    | null: false |
-| kcal                | integer    | null: false |
-| price                | integer    | null: false |
-
-### Association
-
-- has_many :historys, through: set_historys
-- has_many :mains
-- has_many :side_ones
-- has_many :side_twos
-- has_many :sweets
-
-## set_historys テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| history   | references | null: false, foreign_key: true |
-| set   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :history
-- belongs_to :set
-
-## mains テーブル
+## recommends テーブル
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
 | name               | string    | null: false |
 | kcal                | integer    | null: false |
 | price                | integer    | null: false |
-| set                | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :set
-
-## side_ones テーブル
-
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| name               | string    | null: false |
-| kcal                | integer    | null: false |
-| price                | integer    | null: false |
-| set                | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :set
-
-## side_twos テーブル
-
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| name               | string    | null: false |
-| kcal                | integer    | null: false |
-| price                | integer    | null: false |
-| set                | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :set
-
-## sweets テーブル
-
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| name               | string    | null: false |
-| kcal                | integer    | null: false |
-| price                | integer    | null: false |
-| set                | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :set
+- belongs_to :user
+- belongs_to_active_hash :onigiri
+- belongs_to_active_hash :bento
+- belongs_to_active_hash :bread
+- belongs_to_active_hash :sweet_bread
+- belongs_to_active_hash :sandwich
+- belongs_to_active_hash :salad_soup
+- belongs_to_active_hash :fry
+- belongs_to_active_hash :dessert
+- belongs_to_active_hash :drink
