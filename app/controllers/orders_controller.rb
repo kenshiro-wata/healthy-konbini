@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @orders = Order.all.order('created_at DESC')
   end
 
   def new
@@ -8,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    if @article.save
+    if @order.save
       redirect_to root_path
     else
       render :new

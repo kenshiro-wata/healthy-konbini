@@ -17,7 +17,7 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <h2>商品選択</h2>
       <div class="sidebar-sticky pt-3">
-        <%= form_with model: @order, url:new_order_path, local: true do |f| %>
+        <%= form_with model: @order, url:orders_path, local: true do |f| %>
           <div class="article-box">
             おにぎり
             <%= f.collection_select(:onigiri_id, Onigiri.all, :id, :name, {}, {class:"menu-select"}) %>
@@ -49,6 +49,28 @@
           <div class="article-box">
             デザート
             <%= f.collection_select(:dessert_id, Dessert.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+
+          <div class="sell-price">
+            <div>
+              <div class="price-content">
+                <div class="price-text">
+                  <span>価格</span>
+                </div>
+                <span class="sell-yen">¥</span>
+                <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+              </div>
+            </div>
+          </div>
+          <div class="kcal-sum">
+            <div>
+              <div class="kcal-content">
+                <div class="kcal-text">
+                  <span>総カロリー</span>
+                </div>
+                <%= f.text_field :kcal, class:"kcal-input", id:"sum-kcal", placeholder:"例）300" %>
+              </div>
+            </div>
           </div>
           
           <%= f.submit "購入する" ,class:"btn" %>
@@ -142,16 +164,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>シャケおにぎり</td>
-              <td>150kcal</td>
-              <td>120円（税込み）</td>
+              <td id = 'order-name'>シャケおにぎり</td>
+              <td id = 'order-kcal'>150kcal</td>
+              <td id = 'order-price'>120円（税込み）</td>
             </tr>
-            <tr>
-              <td>サラダ</td>
-              <td>100kcal</td>
-              <td>200円（税込み）</td>
-            </tr>
-           
+
           </tbody>
         </table>
       </div>
