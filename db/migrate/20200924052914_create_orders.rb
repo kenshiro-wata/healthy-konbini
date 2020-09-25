@@ -10,7 +10,6 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer :salad_soup_id, null: false
       t.integer :fry_id, null: false
       t.integer :dessert_id, null: false
-      t.integer :drink_id, null: false
       t.integer :price,               null: false
       t.integer :kcal,              null: false
       t.string :user, foreign_key: true

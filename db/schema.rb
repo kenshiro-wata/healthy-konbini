@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2020_09_24_052914) do
     t.integer "salad_soup_id", null: false
     t.integer "fry_id", null: false
     t.integer "dessert_id", null: false
-    t.integer "drink_id", null: false
     t.integer "price", null: false
     t.integer "kcal", null: false
     t.string "user"
