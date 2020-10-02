@@ -1,0 +1,188 @@
+<body class="vsc-initialized">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/">Welcome</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <h2>商品選択</h2>
+      <div class="sidebar-sticky pt-3">
+        <%= form_with model: @order, url:orders_path, local: true do |f| %>
+          <div class="article-box">
+            おにぎり
+            <%= f.collection_select(:onigiri_id, Onigiri.all, :id, :name, {}, {class:"onigiri-select"}) %>
+          </div>
+          <div class="article-box">
+            お弁当
+            <%= f.collection_select(:bento_id, Bento.all, :id, :name, {}, {class:"bento-select"}) %>
+          </div>
+          <div class="article-box">
+            惣菜パン
+            <%= f.collection_select(:bread_id, Bread.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+          <div class="article-box">
+            菓子パン
+            <%= f.collection_select(:sweet_bread_id, SweetBread.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+          <div class="article-box">
+            サンドウィッチ
+            <%= f.collection_select(:sandwich_id, Sandwich.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+          <div class="article-box">
+            サラダ・スープ
+            <%= f.collection_select(:salad_soup_id, SaladSoup.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+          <div class="article-box">
+            揚げ物
+            <%= f.collection_select(:fry_id, Fry.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+          <div class="article-box">
+            デザート
+            <%= f.collection_select(:dessert_id, Dessert.all, :id, :name, {}, {class:"menu-select"}) %>
+          </div>
+
+          <div class="sell-price">
+            <div>
+              <div class="price-content">
+                <div class="price-text">
+                  <span>価格</span>
+                </div>
+                <span class="sell-yen">¥</span>
+                <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+              </div>
+            </div>
+          </div>
+          <div class="kcal-sum">
+            <div>
+              <div class="kcal-content">
+                <div class="kcal-text">
+                  <span>総カロリー</span>
+                </div>
+                <%= f.text_field :kcal, class:"kcal-input", id:"sum-kcal", placeholder:"例）300" %>
+              </div>
+            </div>
+          </div>
+          
+          <%= f.submit "購入する" ,class:"btn" %>
+        <% end %>
+          
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">栄養足りてる？</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><<</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">>></button>
+          </div>
+        </div>
+      </div>
+      
+      <!--raderグラフを挿入-->
+      <canvas id="myChart"></canvas>
+      <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ["糖質", "タンパク質", "脂質", "ビタミン"],
+            datasets: [{
+              label: '選択した商品',
+              backgroundColor: "rgba(255, 0, 0, 0.2)",
+              borderColor: "rgba(255, 0, 0, 0.2)",
+              pointBorderWidth: 1,
+              pointHitRadius:5,
+              data: [20, 20, 20, 20]
+            }]
+          }
+        });
+      </script>
+      <div class= "order-sum">
+        <div class = "order-price-sum">
+          <p>合計: 1000円<p>
+        </div>
+        <div class = "order-kcal-sum">
+          <p>合計: 800kcal<p>
+        </div>
+      </div>
+      
+      <!--raderグラフを挿入-->
+      <h2>選択した商品</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm" id = 'table-set'>
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>カロリー</th>
+              <th>金額</th>
+            </tr>
+          </thead>
+          <tbody id = 'table-body'>
+            
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>合計</td>
+              <td>kcal</td>
+              <td>円（税込み）</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="dashboard.js"></script>
+
+</body>
+
+<%= render "shared/footer" %>

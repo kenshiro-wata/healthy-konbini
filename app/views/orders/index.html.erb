@@ -5,7 +5,7 @@
     <div class="col-md-5 p-lg-5 mx-auto my-5">
       <h1 class="display-4 font-weight-normal">コンビニ健康管理</h1>
       <p class="lead font-weight-normal">あなたに合わせた食事を提案し、栄養管理を行うアプリです</p>
-      <a class="btn btn-outline-secondary" href="#">現在のオススメ »</a>
+      <a class="btn btn-outline-secondary" href="/orders/new">現在のオススメ »</a>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -14,38 +14,21 @@
   <!--購入回数分表示させること -->
   <div class="container marketing">
     <div class="row">
+      <% @orders.each do |order| %>
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2 class = set-item>購入履歴</h2>
-        <p>2020年3月4日 12時40分</p>
-        <p>おにぎり　120円 120kcal</p>
-        <p>サラダ　　350円 80 kcal</p>
+        <h3 class = set-item>購入履歴</h3>
+        <div class='order-info'>
+          <div class='order-price'>
+            <span><br>合計<%= order.price %>円<br>(税込み)</span>
+          </div>
+          <div class='order-kcal'>
+            <span><%= order.kcal %>kcal</span>
+          </div>
+        </div>
         <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2 class = set-item>購入履歴</h2>
-        <p>2020年3月4日 12時40分</p>
-        <p>おにぎり　120円 120kcal</p>
-        <p>サラダ　　350円 80 kcal</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2 class = set-item>購入履歴</h2>
-        <p>2020年3月4日 12時40分</p>
-        <p>おにぎり　120円 120kcal</p>
-        <p>サラダ　　350円 80 kcal</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2 class = set-item>購入履歴</h2>
-        <p>2020年3月4日 12時40分</p>
-        <p>おにぎり　120円 120kcal</p>
-        <p>サラダ　　350円 80 kcal</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
+      <% end %>
     </div><!-- /.row -->
   </div>
   <!--購入回数分表示させること -->
